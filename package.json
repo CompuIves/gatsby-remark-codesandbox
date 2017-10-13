@@ -1,7 +1,6 @@
 {
   "name": "gatsby-remark-codesandbox",
-  "description":
-    "Adds syntax highlighting to code blocks at build time using PrismJS and CodeSandbox",
+  "description": "Adds syntax highlighting to code blocks at build time using PrismJS and CodeSandbox",
   "version": "1.2.9",
   "author": "Ives van Hoorne <ives.v.h@gmail.com>",
   "dependencies": {
@@ -12,10 +11,16 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "cross-env": "^5.0.5",
     "remark": "^7.0.1"
   },
-  "keywords": ["gatsby", "gatsby-plugin", "prismjs", "remark"],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "prismjs",
+    "remark"
+  ],
   "license": "MIT",
   "main": "index.js",
   "scripts": {
