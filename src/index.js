@@ -39,15 +39,9 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
     node.url = codeSandboxUrl;
 
     paragraph.children.unshift({
-      type: 'html',
-      value: '<div class="yes"></div>',
-      hChildren: [
-        {
-          type: 'code',
-          lang: path.extname(sourcePath).slice(1) + highlights,
-          value: sourceCode,
-        },
-      ],
+      type: 'code',
+      lang: path.extname(sourcePath).slice(1) + highlights,
+      value: sourceCode,
     });
   });
 };
