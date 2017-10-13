@@ -8,7 +8,7 @@ export default function getSandboxUrl(path) {
   // Check whether the build is happening on Netlify
   if (process.env.REPOSITORY_URL) {
     const usernameParts = process.env.REPOSITORY_URL.match(
-      /github.com\/(.*)\/reactjs\.org/,
+      /github.com[:|\/](.*)\/reactjs\.org/
     );
     currentUsername = usernameParts[1];
     currentBranch = process.env.BRANCH;
