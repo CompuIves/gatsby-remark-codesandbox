@@ -2,9 +2,9 @@ const visit = require(`unist-util-visit`);
 const path = require('path');
 const fs = require('fs');
 
-const generateCodeSandboxUrl = require('./get-codesandbox-url');
+const generateCodeSandboxUrl = require('./get-codesandbox-url').default;
 
-module.exports = ({markdownAST}, {classPrefix = `language-`} = {}) => {
+module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
   visit(markdownAST, `paragraph`, paragraph => {
     const validParapgraph =
       paragraph.children.length === 1 && paragraph.children[0].type === 'link';
