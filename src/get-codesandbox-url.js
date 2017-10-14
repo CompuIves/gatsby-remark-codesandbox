@@ -1,7 +1,7 @@
 const branch = require('git-branch');
 const username = require('git-username');
 
-export default function getSandboxUrl(path) {
+export default function getSandboxUrl(path, options) {
   let currentBranch;
   let currentUsername;
 
@@ -24,5 +24,5 @@ export default function getSandboxUrl(path) {
     throw new Error('Could not fetch username from the git info.');
   }
 
-  return `https://codesandbox.io/embed/github/${currentUsername}/reactjs.org/tree/${currentBranch}/${path}?codemirror=1&hidenavigation=1`;
+  return `https://codesandbox.io/embed/github/${currentUsername}/reactjs.org/tree/${currentBranch}/${path}?codemirror=1&hidenavigation=1${options}`;
 }
