@@ -23,7 +23,7 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
       .replace('source:', '')
       .split(/(?={.*})/);
 
-    const [highlights, codesandboxOptions = ''] = options.split('?');
+    const [highlights = '', codesandboxOptions = ''] = options.split('?');
 
     const absoluteSourcePath = path.join(process.cwd(), sourcePath);
 
@@ -36,9 +36,14 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
       .toString()
       .trim();
 
+    const lineHighlightsMatch = highlights.match(/{(.*)}/);
+    const highlightedLines = lineHighlightsMatch && lineHighlightsMatch[1];
+
     const codeSandboxUrl = generateCodeSandboxUrl(
       sourcePath,
-      codesandboxOptions + `&highlights=${highlights || '{}'}`
+      codesandboxOptions + highlightedLines
+        ? `&highlights=${highlightedLines}`
+        : ''
     );
 
     node.url = codeSandboxUrl;
