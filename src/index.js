@@ -41,9 +41,8 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
 
     const codeSandboxUrl = generateCodeSandboxUrl(
       sourcePath,
-      codesandboxOptions + highlightedLines
-        ? `&highlights=${highlightedLines}`
-        : ''
+      codesandboxOptions +
+        (highlightedLines ? `&highlights=${highlightedLines}` : '')
     );
 
     node.url = codeSandboxUrl;
