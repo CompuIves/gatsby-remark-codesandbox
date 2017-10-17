@@ -46,7 +46,7 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
 
     paragraph.children.unshift({
       type: 'code',
-      lang: path.extname(sourcePath).slice(1) + highlights,
+      lang: path.extname(sourcePath).slice(1) + `{${highlights}}`,
       value: sourceCode,
     });
   });

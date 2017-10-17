@@ -2,7 +2,7 @@
   "name": "gatsby-remark-codesandbox",
   "description":
     "Adds syntax highlighting to code blocks at build time using PrismJS and CodeSandbox",
-  "version": "1.2.22",
+  "version": "1.2.23",
   "author": "Ives van Hoorne <ives.v.h@gmail.com>",
   "dependencies": {
     "babel-runtime": "^6.26.0",
