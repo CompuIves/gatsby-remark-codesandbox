@@ -1,3 +1,5 @@
+import { getHighlights, getOptions, getSourcePath } from './matchers';
+
 const visit = require(`unist-util-visit`);
 const path = require('path');
 const fs = require('fs');
@@ -19,11 +21,9 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
       return;
     }
 
-    const [sourcePath, options = ''] = node.url
-      .replace('source:', '')
-      .split(/(?={.*})/);
-
-    const [highlights = '', codesandboxOptions = ''] = options.split('?');
+    const sourcePath = getSourcePath(node.url);
+    const highlights = getHighlights(node.url) || '';
+    const codesandboxOptions = getOptions(node.url) || '';
 
     const absoluteSourcePath = path.join(process.cwd(), sourcePath);
 
@@ -36,13 +36,10 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
       .toString()
       .trim();
 
-    const lineHighlightsMatch = highlights.match(/{(.*)}/);
-    const highlightedLines = lineHighlightsMatch && lineHighlightsMatch[1];
-
     const codeSandboxUrl = generateCodeSandboxUrl(
       sourcePath,
       (codesandboxOptions ? `&${codesandboxOptions}` : '') +
-        (highlightedLines ? `&highlights=${highlightedLines}` : '')
+        (highlights ? `&highlights=${highlights}` : '')
     );
 
     node.url = codeSandboxUrl;
