@@ -19,7 +19,7 @@ module.exports = ({ markdownAST }, { classPrefix = `language-` } = {}) => {
       return;
     }
 
-    const [sourcePath, options] = node.url
+    const [sourcePath, options = ''] = node.url
       .replace('source:', '')
       .split(/(?={.*})/);
 
